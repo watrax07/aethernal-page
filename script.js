@@ -343,3 +343,28 @@ window.addEventListener('scroll', () => {
 console.log('🌌 Aethernal - Página cargada correctamente');
 console.log('✨ Animación de estrellas activa');
 console.log('🚀 ¡Bienvenido al universo de Minecraft!');
+
+// Funcionalidad del toggle de reglas
+const toggleRulesBtn = document.getElementById('toggle-rules');
+const rulesContent = document.getElementById('rules-content');
+
+if (toggleRulesBtn && rulesContent) {
+    // Estado inicial: reglas ocultas
+    toggleRulesBtn.querySelector('.btn-text').textContent = 'Ver todas las reglas';
+
+    toggleRulesBtn.addEventListener('click', () => {
+        const isExpanded = toggleRulesBtn.classList.contains('expanded');
+
+        if (isExpanded) {
+            // Colapsar
+            toggleRulesBtn.classList.remove('expanded');
+            rulesContent.classList.remove('show');
+            toggleRulesBtn.querySelector('.btn-text').textContent = 'Ver todas las reglas';
+        } else {
+            // Expandir
+            toggleRulesBtn.classList.add('expanded');
+            rulesContent.classList.add('show');
+            toggleRulesBtn.querySelector('.btn-text').textContent = 'Ocultar reglas';
+        }
+    });
+}
