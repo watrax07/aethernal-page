@@ -23,6 +23,7 @@
             <div class="logo-container">
                 <img src="logo.png" alt="Aethernal MC Logo" class="logo-image">
                 <p class="tagline">Explora el Universo de los Olvidados</p>
+                <div>Vistas: <span id="views">...</span></div>
             </div>
          
         </header>
@@ -222,6 +223,24 @@
 
     <!-- Indicador de progreso de scroll -->
     <div class="scroll-progress" id="scroll-progress"></div>
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const el = document.getElementById("views");
+  if (!el) return; // 👈 evita errores
+
+  const namespace = "wadyacevedo";
+  const key = "mi-github-pages";
+
+  try {
+    const res = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`, { cache: "no-store" });
+    const data = await res.json();
+    el.textContent = data.value;
+  } catch (e) {
+    console.error("Error CountAPI:", e);
+    el.textContent = "error";
+  }
+});
+</script>
 
     <script src="script.js"></script>
 </body>
